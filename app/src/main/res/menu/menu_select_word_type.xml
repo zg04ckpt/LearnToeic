@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itNoun"
+        android:title="@string/noun"/>
+    <item
+        android:id="@+id/itVerb"
+        android:title="@string/verb"/>
+    <item
+        android:id="@+id/itAdj"
+        android:title="@string/adj"/>
+    <item
+        android:id="@+id/itAdv"
+        android:title="@string/adv"/>
+    <item
+        android:id="@+id/itPrep"
+        android:title="@string/prep"/>
+</menu>

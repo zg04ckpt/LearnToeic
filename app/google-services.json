@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "996669841925",
+    "project_id": "learntoeic-fa7ff",
+    "storage_bucket": "learntoeic-fa7ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996669841925:android:17478dc8c0a32d44fa726c",
+        "android_client_info": {
+          "package_name": "com.example.learntoeic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8LHqfEyaFrYB9bmGr31zM3CECVOBegEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

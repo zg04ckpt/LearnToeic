@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:background="@color/color_1"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:text="@string/stt"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="visible"/>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textWordEnglish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/word"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            android:layout_weight="3"
+            android:paddingEnd="@dimen/_4sdp"
+            android:maxLines="3"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/textWordVietnamese"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/mean"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            android:layout_weight="3"
+            android:paddingEnd="@dimen/_4sdp"
+            android:maxLines="3"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/textType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/type"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
