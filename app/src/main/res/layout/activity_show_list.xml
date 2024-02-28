@@ -154,7 +154,7 @@
         android:padding="@dimen/_8sdp"
         android:background="@drawable/background_popup"
         android:elevation="@dimen/_8sdp"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <EditText
             android:id="@+id/inputWordEnglish"
@@ -232,6 +232,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
