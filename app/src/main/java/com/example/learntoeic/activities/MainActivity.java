@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements IUnitListener {
     private UnitAdapter adapter;
     List<Unit> units;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
