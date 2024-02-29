@@ -154,7 +154,7 @@
         android:padding="@dimen/_8sdp"
         android:background="@drawable/background_popup"
         android:elevation="@dimen/_8sdp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <EditText
             android:id="@+id/inputWordEnglish"
