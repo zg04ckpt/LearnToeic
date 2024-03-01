@@ -23,4 +23,8 @@
     <string name="update">Cập nhật</string>
     <string name="delete_word">Xóa từ</string>
     <string name="add_word">Thêm từ</string>
+    <string name="end">Kết thúc</string>
+    <string name="mean_vi">Nghĩa tiếng việt</string>
+    <string name="input_hint_en">Nhập từ tiếng anh</string>
+    <string name="next">Tiếp theo</string>
 </resources>

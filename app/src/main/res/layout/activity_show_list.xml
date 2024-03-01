@@ -142,6 +142,17 @@
         app:backgroundTint="@color/color_4"
         android:layout_margin="@dimen/_16sdp"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabLearn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/delete_word"
+        android:src="@drawable/ic_learn"
+        app:layout_constraintEnd_toStartOf="@id/fabRemoveWord"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/color_4"
+        android:layout_margin="@dimen/_16sdp"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutAddWord"
         android:layout_width="0dp"
@@ -171,7 +182,7 @@
             android:maxLines="1"
             android:inputType="text"
             android:ellipsize="end"
-            android:background="@drawable/background_input"/>
+            android:background="@drawable/background_input" />
 
         <EditText
             android:id="@+id/inputWordVietnamese"

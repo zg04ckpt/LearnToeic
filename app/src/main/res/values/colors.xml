@@ -5,6 +5,9 @@
     <color name="color_3">#ADBC9F</color>
     <color name="color_4">#FBFADA</color>
     <color name="color_dark">#000</color>
+    <color name="color_cover">#36000000</color>
     <color name="color_white">#FFF</color>
     <color name="color_red">#FF3333</color>
+    <color name="color_success">#43FB00</color>
+    <color name="color_blue">#53FFBB</color>
 </resources>
