@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.BlendMode;
 import android.graphics.Color;
@@ -98,6 +99,16 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
             }
             adapter.notifyDataSetChanged();
         });
+
+        binding.fabLearn.setOnClickListener(l -> {
+            Intent intent = new Intent(getApplicationContext(), LearnActivity.class);
+            intent.putExtra(Const.KEY_UNIT_ID, unit.id);
+            startActivity(intent);
+        });
+
+        binding.inputWordEnglish.setOnFocusChangeListener((view, l) -> {
+            //check spell
+        });
     }
 
     private void setSelectionMode(Boolean active) {
@@ -185,19 +196,11 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
         {
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if(dc.getType() == DocumentChange.Type.ADDED && dc.getDocument().getString(Const.KEY_UNIT_ID).equals(unit.id)) {
-                    String typeString = dc.getDocument().getString(Const.KEY_WORD_TYPE);
-                    Word.WordType type;
-                    if(typeString.equals(Word.WordType.Noun.name())) type = Word.WordType.Noun;
-                    else if(typeString.equals(Word.WordType.Verb.name())) type = Word.WordType.Verb;
-                    else if(typeString.equals(Word.WordType.Adj.name())) type = Word.WordType.Adj;
-                    else if(typeString.equals(Word.WordType.Adv.name())) type = Word.WordType.Adv;
-                    else type = Word.WordType.Prep;
-
                     words.add(new Word(
                             dc.getDocument().getId(),
                         dc.getDocument().getString(Const.KEY_WORD_EN),
                         dc.getDocument().getString(Const.KEY_WORD_VN),
-                        type,
+                            dc.getDocument().getString(Const.KEY_WORD_TYPE),
                         false,false));
                 } else if (dc.getType() == DocumentChange.Type.REMOVED) {
                     words.removeIf(w -> Objects.equals(w.id, dc.getDocument().getId()));
@@ -225,7 +228,6 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
             showToast("Chưa nhập từ tiếng anh");
             return false;
         }
-
         if(binding.inputWordVietnamese.getText().toString().trim().isEmpty())
         {
             showToast("Chưa nhập nghĩa tiếng việt");
