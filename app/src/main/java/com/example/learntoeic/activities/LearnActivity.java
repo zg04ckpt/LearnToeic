@@ -69,7 +69,7 @@ public class LearnActivity extends AppCompatActivity {
             update();
         });
 
-        binding.btnCloseResult.setOnClickListener(l -> {
+        binding.btnCloseWrong.setOnClickListener(l -> {
             if(now+1 == words.size()) showResult();
             else {
                 now++;
@@ -78,10 +78,23 @@ public class LearnActivity extends AppCompatActivity {
             binding.viewCover.setVisibility(View.GONE);
             binding.llWrongWord.setVisibility(View.GONE);
         });
+
+        binding.btnCloseResult.setOnClickListener(l -> {
+            binding.llResult.setVisibility(View.GONE);
+            binding.viewCover.setVisibility(View.GONE);
+
+            getOnBackPressedDispatcher().onBackPressed();
+        });
     }
 
     private void showResult() {
+        ZoomAnimation.animateZoomIn(binding.llResult);
+        binding.llResult.setVisibility(View.VISIBLE);
+        binding.viewCover.setVisibility(View.VISIBLE);
 
+        binding.textTotalCount.append(String.valueOf(words.size()));
+        binding.textCorrectCount.append(String.valueOf(correct));
+        binding.textWrongCount.append(String.valueOf(wrong));
     }
 
     private void isLoading(Boolean loading) {

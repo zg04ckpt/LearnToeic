@@ -6,13 +6,11 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.BlendMode;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -26,6 +24,7 @@ import com.example.learntoeic.models.Word;
 import com.example.learntoeic.utilities.Const;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.Filter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -86,8 +85,8 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
         });
 
         binding.fabRemoveWord.setOnClickListener(l -> {
-            if(isDeleteStatus) cancelDeleteWordStatus();
-            else deleteWord();
+            if(isDeleteStatus) deleteWords();
+            else setDeleteWordStatus();
         });
 
         binding.checkBoxAll.setOnClickListener(l -> {
@@ -118,6 +117,18 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
     }
 
     private void cancelDeleteWordStatus() {
+        binding.fabAddWord.setImageResource(R.drawable.ic_add);
+        binding.fabAddWord.setBackgroundTintList(
+                ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.color_4)));
+
+        binding.fabRemoveWord.setImageResource(R.drawable.ic_delete);
+        binding.textOrder.setVisibility(View.VISIBLE);
+        binding.checkBoxAll.setVisibility(View.GONE);
+        for(Word w : words) w.flag = false;
+        setSelectionMode(false);
+    }
+
+    private void deleteWords() {
         boolean deleted = false;
         for(int i=words.size()-1; i>=0; --i){
             if(words.get(i).flag)
@@ -141,7 +152,7 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
         else showToast("Xóa thành công");
     }
 
-    private void deleteWord() {
+    private void setDeleteWordStatus() {
         binding.fabRemoveWord.setImageResource(R.drawable.ic_confirm);
         binding.textOrder.setVisibility(View.GONE);
         binding.checkBoxAll.setVisibility(View.VISIBLE);
@@ -159,10 +170,12 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
         String ty = binding.textType.getText().toString();
 
         db.collection(Const.KEY_COLLECTION_WORDS)
-                .whereEqualTo(Const.KEY_WORD_EN, en)
+                .where(Filter.or(
+                        Filter.equalTo(Const.KEY_WORD_EN, en),
+                        Filter.equalTo(Const.KEY_WORD_VN, vi)))
                 .get().addOnSuccessListener(queryDocumentSnapshots -> {
                     if(queryDocumentSnapshots.getDocuments().size() > 0) {
-                        showToast("Từ đã tồn tại");
+                        showToast("Từ đã tồn tại hoặc nghĩa bị trùng");
                     } else {
                         HashMap<String, Object> data = new HashMap<>();
                         data.put(Const.KEY_UNIT_ID, unit.id);
@@ -216,7 +229,6 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
             binding.layoutAddWord.setVisibility(View.VISIBLE);
             ZoomAnimation.animateZoomIn(binding.layoutAddWord);
         } else {
-            ZoomAnimation.animateZoomOut(binding.layoutAddWord);
             binding.layoutAddWord.setVisibility(View.GONE);
         }
     }
@@ -265,7 +277,7 @@ public class ShowListActivity extends AppCompatActivity implements MenuItem.OnMe
     @Override
     public void onLongClickListener(Word word) {
         word.setFlag(true);
-        deleteWord();
+        setDeleteWordStatus();
     }
 
     @Override
