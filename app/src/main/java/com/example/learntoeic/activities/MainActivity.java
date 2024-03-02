@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements IUnitListener {
         });
         binding.buttonClose.setOnClickListener(v -> {
             binding.layoutAddUnit.setVisibility(View.GONE);
-            ZoomAnimation.animateZoomOut(binding.layoutAddUnit);
         });
         binding.buttonAdd.setOnClickListener(v -> addUnit());
     }
